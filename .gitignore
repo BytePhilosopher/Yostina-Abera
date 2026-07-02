@@ -1,0 +1,6 @@
+node_modules/
+client/dist/
+server/messages.log
+.DS_Store
+*.log
+.env
