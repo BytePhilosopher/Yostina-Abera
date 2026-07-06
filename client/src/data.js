@@ -83,6 +83,7 @@ export const projects = [
   {
     title: 'Football Video Analytics',
     icon: 'football',
+    image: '/footballvideoanalytics.jpg',
     accent: ['#2f5d3a', '#8bb894'],
     blurb: 'Detects, tracks, and analyzes players and the ball from real match footage.',
     tools: ['Python', 'OpenCV', 'YOLOv8', 'ByteTrack', 'Streamlit'],
