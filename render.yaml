@@ -1,0 +1,17 @@
+# One-click deploy on Render (https://render.com).
+# Serves the built React client + the API from a single Node web service.
+services:
+  - type: web
+    name: yostina-portfolio
+    runtime: node
+    plan: free
+    buildCommand: npm --prefix client install && npm --prefix client run build && npm --prefix server install
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Optional: forward contact messages to a webhook
+      # - key: CONTACT_WEBHOOK_URL
+      #   sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true

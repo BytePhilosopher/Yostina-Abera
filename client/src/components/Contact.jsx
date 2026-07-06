@@ -13,12 +13,18 @@ export default function Contact() {
     setSending(true);
     setStatus('');
     try {
-      const res = await fetch('/api/contact', {
+      const endpoint = contact.formEndpoint || `${import.meta.env.VITE_API_URL || ''}/api/contact`;
+      const payload = { ...form, subject: `Portfolio message from ${form.name}` };
+      if (contact.formAccessKey) payload.access_key = contact.formAccessKey; // Web3Forms
+
+      const res = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) throw new Error();
+
       setStatus("Thank you — I'll get back to you shortly.");
       setForm({ name: '', email: '', message: '' });
     } catch {

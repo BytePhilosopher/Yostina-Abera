@@ -1,0 +1,8 @@
+# Not needed on Vercel (Express server is for Render/Docker/self-host).
+server/
+Dockerfile
+.dockerignore
+render.yaml
+**/node_modules
+**/dist
+**/*.log

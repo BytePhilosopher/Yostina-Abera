@@ -57,7 +57,7 @@ export default function Hero() {
             </motion.span>
           </motion.p>
           <motion.p className="hero__lede" variants={item}>
-            I build functional and scalable sites and craft clear insights from
+            I build functional and scalable web applications and turn clear insights from
             messy real-world signals.
           </motion.p>
           <motion.div className="hero__actions" variants={item}>

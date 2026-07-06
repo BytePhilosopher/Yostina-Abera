@@ -134,4 +134,13 @@ export const contact = {
   github: '#',
   githubUser: 'Bytephilosopher', // used for the contribution chart — change to your GitHub username
   cv: '/yostina_cv.pdf',
+
+  // ---- Contact form delivery ----
+  // Paste ONE of these to receive messages by email (no backend needed):
+  //  • Web3Forms (no account): set formEndpoint = 'https://api.web3forms.com/submit'
+  //                            and formAccessKey = 'your-access-key' (get it at web3forms.com).
+  //  • Formspree: set formEndpoint = 'https://formspree.io/f/xxxxxx' (leave formAccessKey '').
+  // If left blank, the form posts to the built-in /api endpoint instead.
+  formEndpoint: '',
+  formAccessKey: '',
 };

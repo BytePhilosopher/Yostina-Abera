@@ -1,6 +1,14 @@
 node_modules/
+**/node_modules/
+dist/
 client/dist/
 server/messages.log
 .DS_Store
 *.log
+
+# Env files (keep .env.example tracked)
 .env
+**/.env
+**/.env.local
+**/.env.*.local
+!**/.env.example
