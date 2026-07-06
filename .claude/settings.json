@@ -3,7 +3,8 @@
     "allow": [
       "Bash(node --check api/contact.js)",
       "Bash(node --check server/index.js)",
-      "Bash(npm --prefix client run build)"
+      "Bash(npm --prefix client run build)",
+      "Bash(npm --prefix client install)"
     ]
   }
 }
