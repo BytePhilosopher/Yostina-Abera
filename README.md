@@ -22,7 +22,7 @@ Everything (education, projects, skills, contact links) lives in
 [`client/src/data.js`](client/src/data.js). Update that to change the site.
 
 Media in `client/public/`: `profile.png` (background-removed photo),
-`cpfocus.jpg`, `fuelq.jpg`, `yostina_cv.pdf`, `og-image.jpg`.
+`cpfocus.jpg`, `militaryhealthmanagament.jpg`, `yostina_cv.pdf`, `og-image.jpg`.
 
 ## Before you deploy
 1. **Set your real domain** — replace `https://yostina-portfolio.example.com`

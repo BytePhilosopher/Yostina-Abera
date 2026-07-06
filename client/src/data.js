@@ -89,13 +89,13 @@ export const projects = [
     link: 'https://github.com/ML-interns-aau/footballtracking',
   },
   {
-    title: 'FuelQ',
+    title: 'Military Health Management',
     icon: 'analytics',
-    image: '/fuelq.jpg',
+    image: '/militaryhealthmanagament.jpg',
     accent: ['#5b3a5b', '#cfa9cf'],
-    blurb: 'A digital queue-management system for fuel stations in Ethiopia — eliminating hours of physical waiting through smart scheduling and integrated Chapa payments.',
-    tools: ['React', 'Node.js', 'Chapa API'],
-    link: 'https://github.com/BytePhilosopher/GDG-Hacktom/tree/main/smart-gas-queue',
+    blurb: 'A secure web-based system for managing military health records and services — streamlining medical care, appointments, and emergency response for personnel.',
+    tools: ['React', 'Node.js', 'React Router', 'MySQL'],
+    link: 'https://github.com/BytePhilosopher/military-management-system',
   },
 ];
 
