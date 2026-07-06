@@ -136,12 +136,13 @@ export const contact = {
   cv: '/yostina_cv.pdf',
 
   // ---- Contact form ----
-  // Messages go through the /api/contact function, which reads the delivery
-  // key from a SERVER env var (WEB3FORMS_ACCESS_KEY) — so no key ever lives in
-  // this repo or the browser bundle. Set it in Vercel:
-  //   Settings → Environment Variables → WEB3FORMS_ACCESS_KEY = <your key>
-  // (Advanced) To bypass the function and post straight to a form service,
-  // set formEndpoint/formAccessKey below instead. Leave blank to use /api.
-  formEndpoint: '',
-  formAccessKey: '',
+  // Web3Forms is called directly from the browser (it's fronted by Cloudflare,
+  // which blocks server-side/datacenter calls — so the serverless route won't
+  // work for it). The access key is public by design; keep it out of the repo
+  // with a build-time env var, and lock "Allowed Domains" in the Web3Forms
+  // dashboard. On Vercel: Settings → Environment Variables → set
+  //   WEB3FORMS_ACCESS_KEY (or VITE_WEB3FORMS_KEY) = <your key>   then redeploy.
+  // The key is injected at build time via vite.config.js (__WEB3FORMS_KEY__).
+  formEndpoint: 'https://api.web3forms.com/submit',
+  formAccessKey: (typeof __WEB3FORMS_KEY__ !== 'undefined' && __WEB3FORMS_KEY__) || '',
 };
