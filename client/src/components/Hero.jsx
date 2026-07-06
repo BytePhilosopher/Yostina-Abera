@@ -89,6 +89,17 @@ export default function Hero() {
           <div className="hero__blob" aria-hidden="true" />
         </motion.div>
       </div>
+
+      <motion.a
+        href="#about"
+        className="hero__scroll"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.8 }}
+      >
+        <span className="hero__scroll-line" aria-hidden="true" />
+        Scroll
+      </motion.a>
     </section>
   );
 }
