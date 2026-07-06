@@ -90,23 +90,42 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     console.error('Failed to store message:', err);
   }
 
-  // Optional: forward to a webhook (Slack/Discord/Zapier/Make/Formspree, etc.)
-  if (process.env.CONTACT_WEBHOOK_URL) {
-    try {
+  try {
+    // Preferred: Web3Forms (emails you). Key from server env — never exposed.
+    if (process.env.WEB3FORMS_ACCESS_KEY) {
+      const r = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: process.env.WEB3FORMS_ACCESS_KEY,
+          name, email, message,
+          subject: `Portfolio message from ${name}`,
+          from_name: 'Portfolio Contact Form',
+        }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.success === false) {
+        console.error('Web3Forms error:', data);
+        return res.status(502).json({ error: 'Could not send message.' });
+      }
+      return res.status(200).json({ ok: true });
+    }
+
+    // Alternative: generic webhook (Slack/Discord/Zapier/Make/Formspree).
+    if (process.env.CONTACT_WEBHOOK_URL) {
       await fetch(process.env.CONTACT_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text: `New portfolio message from ${name} <${email}>:\n${message}`,
-          ...entry,
-        }),
+        body: JSON.stringify({ text: `New portfolio message from ${name} <${email}>:\n${message}`, ...entry }),
       });
-    } catch (err) {
-      console.error('Webhook forward failed:', err);
+      return res.status(200).json({ ok: true });
     }
+  } catch (err) {
+    console.error('Contact delivery failed:', err);
+    return res.status(502).json({ error: 'Could not send message.' });
   }
 
-  console.log('New contact message:', { name, email });
+  console.log('New contact message (no delivery configured):', { name, email });
   return res.status(200).json({ ok: true });
 });
 

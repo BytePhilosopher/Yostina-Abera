@@ -56,10 +56,13 @@ The repo is preconfigured ([vercel.json](vercel.json) + [api/contact.js](api/con
 2. On Vercel: **Add New → Project → Import** this repo. Leave everything default
    — `vercel.json` sets the build (`client` → `client/dist`), the security
    headers, and asset caching. `api/contact.js` is auto-deployed as `/api/contact`.
-3. **To actually receive messages**, add an env var in
-   **Project → Settings → Environment Variables**:
-   `CONTACT_WEBHOOK_URL` = a Slack/Discord/Zapier/Make webhook (or a form/email
-   service). Without it, submissions succeed but only appear in the function logs.
+3. **To receive messages**, add an env var in
+   **Project → Settings → Environment Variables** (redeploy after adding):
+   `WEB3FORMS_ACCESS_KEY` = your free key from [web3forms.com](https://web3forms.com)
+   — the `/api/contact` function reads it server-side and emails you, so the key
+   never touches the repo or the browser bundle. (Alternatively set
+   `CONTACT_WEBHOOK_URL` for Slack/Discord/Zapier.) Without either, submissions
+   succeed but only appear in the function logs.
 4. Deploy. Then update the placeholder domain (see "Before you deploy").
 
 > The Express server in `server/` is **not** used on Vercel (it's for the
