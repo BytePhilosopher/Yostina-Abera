@@ -28,6 +28,22 @@ export function Pumpkin({ size = 64, ...rest }) {
   );
 }
 
+// Witch hat with a bent tip and a glowing buckle
+export function WitchHat({ size = 200, ...rest }) {
+  return (
+    <Svg size={size} viewBox="0 0 200 170" {...rest}>
+      <path d="M46 138C60 92 78 54 92 34c10-14 32-28 62-20-17 6-28 16-32 30 8 34 20 66 32 94z" fill="#1d1036" />
+      <path d="M92 34c-10 22-20 62-22 100" stroke="#3a2268" strokeWidth="3" strokeLinecap="round" />
+      <ellipse cx="100" cy="142" rx="98" ry="21" fill="#140a28" />
+      <path d="M40 124c36 14 84 14 120 0l6 16c-40 16-92 16-132 0z" fill="var(--ember)" />
+      <rect x="86" y="122" width="28" height="26" rx="3" fill="#140a28" stroke="var(--gold)" strokeWidth="4" />
+      <circle cx="136" cy="72" r="2.6" fill="var(--gold)" />
+      <circle cx="104" cy="88" r="1.9" fill="var(--gold)" />
+      <circle cx="122" cy="46" r="1.7" fill="var(--gold)" />
+    </Svg>
+  );
+}
+
 // Black cat, sitting, tail curled
 export function Cat({ size = 100, ...rest }) {
   return (

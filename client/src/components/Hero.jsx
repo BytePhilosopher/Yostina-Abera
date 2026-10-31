@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 import { contact } from '../data.js';
 import Scene from './Scene.jsx';
-import { Bat, Pumpkin, Spider, Web } from './Icons.jsx';
+import { Bat, Pumpkin, Spider, Web, WitchHat } from './Icons.jsx';
 
 const container = {
   hidden: {},
@@ -78,12 +78,30 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
         >
+          <svg className="hero__defs" aria-hidden="true">
+            <filter id="spooky-duotone" colorInterpolationFilters="sRGB">
+              <feColorMatrix type="saturate" values="0" />
+              <feComponentTransfer>
+                <feFuncR type="table" tableValues="0.05 0.36 0.98 1 1" />
+                <feFuncG type="table" tableValues="0.02 0.08 0.48 0.86 1" />
+                <feFuncB type="table" tableValues="0.12 0.46 0.20 0.48 1" />
+              </feComponentTransfer>
+            </filter>
+          </svg>
           <div className="hero__moon">
             <img src="/profile.png" alt="Yostina Abera Gobie" />
+            <span className="hero__fog" aria-hidden="true" />
+            <span className="hero__lightning" aria-hidden="true" />
           </div>
-          <Bat className="hero__moonbat" size={70} />
+          <WitchHat className="hero__hat" size="100%" />
+          <div className="hero__orbit" aria-hidden="true">
+            <Bat size={46} />
+            <Bat size={30} />
+            <Bat size={38} />
+          </div>
           <Spider className="hero__spider" size={52} />
           <Pumpkin className="hero__pumpkin" size={140} />
+          <Pumpkin className="hero__pumpkin hero__pumpkin--small" size={78} />
         </motion.div>
       </div>
 
