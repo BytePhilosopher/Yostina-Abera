@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 import { contact } from '../data.js';
@@ -14,33 +13,9 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const COMMAND = 'whoami';
 const EMBERS = [6, 14, 23, 31, 38, 47, 55, 62, 70, 78, 86, 94];
 
-function useTypewriter(text, speed = 130, startDelay = 500) {
-  const [typed, setTyped] = useState('');
-  const [done, setDone] = useState(false);
-  useEffect(() => {
-    let i = 0;
-    let interval;
-    const start = setTimeout(() => {
-      interval = setInterval(() => {
-        i += 1;
-        setTyped(text.slice(0, i));
-        if (i >= text.length) {
-          clearInterval(interval);
-          setDone(true);
-        }
-      }, speed);
-    }, startDelay);
-    return () => { clearTimeout(start); clearInterval(interval); };
-  }, [text, speed, startDelay]);
-  return { typed, done };
-}
-
 export default function Hero() {
-  const { typed, done } = useTypewriter(COMMAND);
-
   return (
     <section className="hero" id="top">
       <div className="hero__embers" aria-hidden="true">
@@ -56,10 +31,6 @@ export default function Hero() {
       <div className="container hero__inner">
         <motion.div className="hero__text" variants={container} initial="hidden" animate="show">
           <motion.p className="hero__name" variants={item}>Yostina Abera</motion.p>
-          <p className="hero__term" aria-hidden="true">
-            <span className="hero__prompt">$</span> {typed}
-            <span className={`hero__caret ${done ? 'hero__caret--blink' : ''}`} />
-          </p>
           <motion.h1 className="hero__title" variants={item}>Developer</motion.h1>
           <motion.p className="hero__lede" variants={item}>
             Backends, ML pipelines and data systems. Built after dark.
@@ -78,18 +49,8 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
         >
-          <svg className="hero__defs" aria-hidden="true">
-            <filter id="spooky-duotone" colorInterpolationFilters="sRGB">
-              <feColorMatrix type="saturate" values="0" />
-              <feComponentTransfer>
-                <feFuncR type="table" tableValues="0.05 0.36 0.98 1 1" />
-                <feFuncG type="table" tableValues="0.02 0.08 0.48 0.86 1" />
-                <feFuncB type="table" tableValues="0.12 0.46 0.20 0.48 1" />
-              </feComponentTransfer>
-            </filter>
-          </svg>
           <div className="hero__moon">
-            <img src="/profile.png" alt="Yostina Abera Gobie" />
+            <img src="/profile-cutout.png" alt="Yostina Abera Gobie" />
             <span className="hero__fog" aria-hidden="true" />
             <span className="hero__lightning" aria-hidden="true" />
           </div>

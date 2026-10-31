@@ -1,6 +1,6 @@
 import { Cat, Pumpkin } from './Icons.jsx';
 
-const SILHOUETTE = '#050308';
+const SILHOUETTE = '#000000';
 
 function Grave({ x, y, s = 1 }) {
   return (
@@ -20,7 +20,7 @@ function fence(from, to, y) {
 export default function Scene() {
   return (
     <svg className="scene" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <path d="M0 190c200-44 380-20 560-34 200-16 360-70 520-60 150 8 260 50 360 44v160H0z" fill="#170d2b" />
+      <path d="M0 190c200-44 380-20 560-34 200-16 360-70 520-60 150 8 260 50 360 44v160H0z" fill="#161616" />
 
       {/* haunted house */}
       <g fill={SILHOUETTE}>
@@ -53,7 +53,7 @@ export default function Scene() {
       <Grave x={1210} y={244} s={1} />
       <Grave x={1320} y={238} s={1.2} />
 
-      <path d="M0 268c220-16 460 8 720-2s480-10 720 0v34H0z" fill="#08060c" />
+      <path d="M0 268c220-16 460 8 720-2s480-10 720 0v34H0z" fill="#000000" />
 
       <Cat x="560" y="186" size={88} style={{ color: SILHOUETTE }} />
       <Pumpkin x="700" y="226" size={62} />

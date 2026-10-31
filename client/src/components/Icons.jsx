@@ -32,11 +32,11 @@ export function Pumpkin({ size = 64, ...rest }) {
 export function WitchHat({ size = 200, ...rest }) {
   return (
     <Svg size={size} viewBox="0 0 200 170" {...rest}>
-      <path d="M46 138C60 92 78 54 92 34c10-14 32-28 62-20-17 6-28 16-32 30 8 34 20 66 32 94z" fill="#1d1036" />
-      <path d="M92 34c-10 22-20 62-22 100" stroke="#3a2268" strokeWidth="3" strokeLinecap="round" />
-      <ellipse cx="100" cy="142" rx="98" ry="21" fill="#140a28" />
+      <path d="M46 138C60 92 78 54 92 34c10-14 32-28 62-20-17 6-28 16-32 30 8 34 20 66 32 94z" fill="#0d0d0d" />
+      <path d="M92 34c-10 22-20 62-22 100" stroke="#2b2b2b" strokeWidth="3" strokeLinecap="round" />
+      <ellipse cx="100" cy="142" rx="98" ry="21" fill="#050505" />
       <path d="M40 124c36 14 84 14 120 0l6 16c-40 16-92 16-132 0z" fill="var(--ember)" />
-      <rect x="86" y="122" width="28" height="26" rx="3" fill="#140a28" stroke="var(--gold)" strokeWidth="4" />
+      <rect x="86" y="122" width="28" height="26" rx="3" fill="#050505" stroke="var(--gold)" strokeWidth="4" />
       <circle cx="136" cy="72" r="2.6" fill="var(--gold)" />
       <circle cx="104" cy="88" r="1.9" fill="var(--gold)" />
       <circle cx="122" cy="46" r="1.7" fill="var(--gold)" />
@@ -74,8 +74,8 @@ export function Eyes({ size = 48, delay = 0, ...rest }) {
       <g className="blink" style={{ animationDelay: `${delay}s` }}>
         <path d="M2 9c4-6 11-6 16 0-5 5-12 5-16 0z" fill="var(--gold)" />
         <path d="M46 9c-4-6-11-6-16 0 5 5 12 5 16 0z" fill="var(--gold)" />
-        <ellipse cx="10" cy="8.6" rx="1.4" ry="3.6" fill="#08060c" />
-        <ellipse cx="38" cy="8.6" rx="1.4" ry="3.6" fill="#08060c" />
+        <ellipse cx="10" cy="8.6" rx="1.4" ry="3.6" fill="#000000" />
+        <ellipse cx="38" cy="8.6" rx="1.4" ry="3.6" fill="#000000" />
       </g>
     </Svg>
   );
@@ -117,7 +117,7 @@ export function Eyeball({ size = 64, ...rest }) {
       <circle cx="32" cy="32" r="27" fill="var(--bone)" />
       <path d="M6 30c5 1 8-2 11 1M58 34c-5-1-7 3-11 0M16 12c3 4 3 7 7 9M49 52c-3-4-2-7-6-9M50 12c-2 4-5 5-6 9M14 52c3-3 3-6 7-8" stroke="var(--blood)" strokeWidth="1.6" strokeLinecap="round" />
       <circle cx="32" cy="32" r="13" fill="var(--ember)" />
-      <ellipse cx="32" cy="32" rx="3.4" ry="11" fill="#08060c" />
+      <ellipse cx="32" cy="32" rx="3.4" ry="11" fill="#000000" />
     </Svg>
   );
 }
@@ -156,8 +156,8 @@ export function SkullCoin({ size = 64, ...rest }) {
   return (
     <Svg size={size} {...rest}>
       <circle cx="32" cy="32" r="28" fill="currentColor" />
-      <circle cx="32" cy="32" r="23" stroke="#08060c" strokeWidth="1.8" strokeDasharray="2 3" />
-      <path d="M32 14c-10 0-16 7-16 15 0 6 3 10 7 12v7h18v-7c4-2 7-6 7-12 0-8-6-15-16-15z" fill="#08060c" />
+      <circle cx="32" cy="32" r="23" stroke="#000000" strokeWidth="1.8" strokeDasharray="2 3" />
+      <path d="M32 14c-10 0-16 7-16 15 0 6 3 10 7 12v7h18v-7c4-2 7-6 7-12 0-8-6-15-16-15z" fill="#000000" />
       <circle cx="25" cy="29" r="4.4" fill="var(--ember)" />
       <circle cx="39" cy="29" r="4.4" fill="var(--ember)" />
       <path d="M32 33l3 5h-6zM28 43v5M32 43v5M36 43v5" fill="currentColor" stroke="currentColor" strokeWidth="1.4" />
@@ -171,7 +171,7 @@ export function Tombstone({ size = 64, ...rest }) {
     <Svg size={size} {...rest}>
       <path d="M14 58V26a18 18 0 0 1 36 0v32z" fill="currentColor" />
       <path d="M6 58h52" {...stroke} />
-      <text x="32" y="36" textAnchor="middle" fontSize="13" fontWeight="700" fontFamily="var(--font-mono)" fill="#08060c">RIP</text>
+      <text x="32" y="36" textAnchor="middle" fontSize="13" fontWeight="700" fontFamily="var(--font-mono)" fill="#000000">RIP</text>
     </Svg>
   );
 }
@@ -180,9 +180,9 @@ export function Ghost({ size = 64, ...rest }) {
   return (
     <Svg size={size} {...rest}>
       <path d="M12 58V28a20 20 0 0 1 40 0v30l-7-6-6 6-7-6-7 6-6-6z" fill="currentColor" />
-      <ellipse cx="25" cy="27" rx="3.6" ry="5" fill="#08060c" />
-      <ellipse cx="39" cy="27" rx="3.6" ry="5" fill="#08060c" />
-      <ellipse cx="32" cy="39" rx="4" ry="5" fill="#08060c" />
+      <ellipse cx="25" cy="27" rx="3.6" ry="5" fill="#000000" />
+      <ellipse cx="39" cy="27" rx="3.6" ry="5" fill="#000000" />
+      <ellipse cx="32" cy="39" rx="4" ry="5" fill="#000000" />
     </Svg>
   );
 }
