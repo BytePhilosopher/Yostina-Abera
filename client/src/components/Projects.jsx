@@ -1,77 +1,57 @@
 import { motion } from 'framer-motion';
-import Reveal from './Reveal.jsx';
+import SectionHead from './SectionHead.jsx';
 import { projects } from '../data.js';
-import { FiActivity, FiMessageSquare, FiTarget, FiTrendingUp, FiArrowRight, FiExternalLink } from 'react-icons/fi';
-import { FaChrome } from 'react-icons/fa';
+import { FiArrowUpRight } from 'react-icons/fi';
+import { FaChrome, FaGithub } from 'react-icons/fa';
+import { Cauldron, Eyeball, Eyes, Pumpkin, PumpGhost, SkullCoin } from './Icons.jsx';
 
-const COVER_ICONS = {
-  football: FiActivity,
-  nlp: FiMessageSquare,
-  focus: FiTarget,
-  analytics: FiTrendingUp,
-};
+const SIGILS = { eyeball: Eyeball, pump: PumpGhost, cauldron: Cauldron, coin: SkullCoin };
 
 export default function Projects() {
   return (
-    <section className="section" id="projects">
+    <section className="section" id="work">
+      <Eyes className="lurker lurker--work" size={70} delay={1.4} />
       <div className="container">
-        <Reveal className="section__head">
-          <span className="section__index">03 — Projects</span>
-          <h2 className="section__title">Selected work</h2>
-        </Reveal>
+        <SectionHead icon={Pumpkin} title="Shipped" />
 
-        <div className="showcase">
+        <div className="work-grid">
           {projects.map((p, i) => {
-            const Icon = COVER_ICONS[p.icon] || FiTarget;
-            const reversed = i % 2 === 1;
+            const Sigil = SIGILS[p.icon];
             return (
-              <div className={`showcase-row ${reversed ? 'showcase-row--rev' : ''}`} key={p.title}>
-                {/* Visual */}
-                <motion.div
-                  className="showcase-visual"
-                  initial={{ opacity: 0, x: reversed ? 40 : -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  {p.image ? (
-                    <div className="showcase-visual__inner showcase-visual__inner--img">
-                      <img src={p.image} alt={p.title} loading="lazy" />
-                    </div>
-                  ) : (
-                    <div className={`showcase-visual__inner cover cover--t${(i % 4) + 1}`}>
-                      <span className="cover__watermark" aria-hidden="true"><Icon /></span>
-                      <span className="cover__badge"><Icon /></span>
-                    </div>
-                  )}
-                </motion.div>
-
-                {/* Content */}
-                <motion.div
-                  className="showcase-content"
-                  initial={{ opacity: 0, x: reversed ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                >
-                  <span className="showcase-num">0{i + 1}</span>
-                  <h3 className="showcase-title">{p.title}</h3>
-                  <p className="showcase-blurb">{p.blurb}</p>
-                  <div className="showcase-tools">
+              <motion.article
+                className="work-card"
+                key={p.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '0px 0px -60px 0px' }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: (i % 2) * 0.1 }}
+              >
+                <div className="work-card__art">
+                  <Sigil className="work-card__sigil" size={132} />
+                </div>
+                <div className="fangs fangs--thin" aria-hidden="true" />
+                <div className="work-card__body">
+                  <div className="work-card__metric">
+                    <strong>{p.metric}</strong>
+                    <span>{p.metricLabel}</span>
+                  </div>
+                  <h3>{p.title}</h3>
+                  <p>{p.blurb}</p>
+                  <div className="work-card__tools">
                     {p.tools.map((t) => <span key={t}>{t}</span>)}
                   </div>
-                  <div className="showcase-links">
-                    <a className="showcase-link" href={p.link} target="_blank" rel="noopener">
-                      View on GitHub <FiArrowRight size={14} />
+                  <div className="work-card__links">
+                    <a href={p.link} target="_blank" rel="noopener">
+                      <FaGithub size={16} /> Code <FiArrowUpRight size={14} />
                     </a>
                     {p.store && (
-                      <a className="showcase-link showcase-link--store" href={p.store} target="_blank" rel="noopener">
-                        <FaChrome size={13} /> Chrome Store <FiExternalLink size={13} />
+                      <a href={p.store} target="_blank" rel="noopener">
+                        <FaChrome size={15} /> Install <FiArrowUpRight size={14} />
                       </a>
                     )}
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.article>
             );
           })}
         </div>

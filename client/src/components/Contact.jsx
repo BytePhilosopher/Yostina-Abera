@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub, FiArrowUpRight, FiSend } from 'react-icons/fi';
 import { contact } from '../data.js';
+import { Spider, Web } from './Icons.jsx';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -43,6 +44,9 @@ export default function Contact() {
 
   return (
     <section className="section section--contact" id="contact">
+      <Web className="contact__web contact__web--left" size={300} />
+      <Web className="contact__web contact__web--right" size={240} />
+      <Spider className="contact__spider" size={56} />
       <div className="container">
         <motion.div
           className="contact"
@@ -52,12 +56,8 @@ export default function Contact() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="contact__intro">
-            <span className="section__index">05 — Contact</span>
-            <h2 className="contact__title">Let's work together.</h2>
-            <p className="contact__lede">
-              Open to internships, research, and collaboration in ML, computer
-              vision, and software engineering. I'll reply as soon as I can.
-            </p>
+            <h2 className="contact__title">Let's build.</h2>
+            <p className="contact__lede">Don't be a ghost.</p>
             <ul className="contact__channels">
               {channels.map((c) => (
                 <li key={c.label}>
@@ -94,7 +94,7 @@ export default function Contact() {
             <label>
               <span>Message</span>
               <textarea
-                required rows="4" placeholder="Tell me about your project or role…"
+                required rows="4" placeholder="The role or the project…"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
               />

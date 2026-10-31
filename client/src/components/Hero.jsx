@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiDownload } from 'react-icons/fi';
+import { FiDownload, FiArrowDown } from 'react-icons/fi';
 import { contact } from '../data.js';
+import Scene from './Scene.jsx';
+import { Bat, Pumpkin, Spider, Web } from './Icons.jsx';
 
 const container = {
   hidden: {},
@@ -12,9 +14,10 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const NAME = 'YOSTINA';
+const COMMAND = 'whoami';
+const EMBERS = [6, 14, 23, 31, 38, 47, 55, 62, 70, 78, 86, 94];
 
-function useTypewriter(text, speed = 150, startDelay = 500) {
+function useTypewriter(text, speed = 130, startDelay = 500) {
   const [typed, setTyped] = useState('');
   const [done, setDone] = useState(false);
   useEffect(() => {
@@ -36,34 +39,35 @@ function useTypewriter(text, speed = 150, startDelay = 500) {
 }
 
 export default function Hero() {
-  const { typed, done } = useTypewriter(NAME);
+  const { typed, done } = useTypewriter(COMMAND);
 
   return (
     <section className="hero" id="top">
+      <div className="hero__embers" aria-hidden="true">
+        {EMBERS.map((left, i) => (
+          <span key={left} style={{ left: `${left}%`, animationDelay: `${(i * 1.7) % 9}s`, animationDuration: `${8 + (i % 5)}s` }} />
+        ))}
+      </div>
+      <Web className="hero__web" size={280} />
+      <Bat className="bat bat--1" size={54} />
+      <Bat className="bat bat--2" size={34} />
+      <Bat className="bat bat--3" size={24} />
+
       <div className="container hero__inner">
         <motion.div className="hero__text" variants={container} initial="hidden" animate="show">
-          <h1 className="hero__title" aria-label={NAME}>
-            <span>{typed}</span>
-            <span className={`hero__caret ${done ? 'hero__caret--blink' : ''}`} aria-hidden="true" />
-          </h1>
-          <motion.p className="hero__tagline" variants={item}>
-            <span className="hero__tagline-line">the Developer,</span>{' '}
-            <motion.span
-              className="hero__tagline-accent"
-              animate={{ backgroundPositionX: ['0%', '200%'] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-            >
-              with passion
-            </motion.span>
-          </motion.p>
+          <motion.p className="hero__name" variants={item}>Yostina Abera</motion.p>
+          <p className="hero__term" aria-hidden="true">
+            <span className="hero__prompt">$</span> {typed}
+            <span className={`hero__caret ${done ? 'hero__caret--blink' : ''}`} />
+          </p>
+          <motion.h1 className="hero__title" variants={item}>Developer</motion.h1>
           <motion.p className="hero__lede" variants={item}>
-            I build functional and scalable web applications and turn clear insights from
-            messy real-world signals.
+            Backends, ML pipelines and data systems. Built after dark.
           </motion.p>
           <motion.div className="hero__actions" variants={item}>
-            <a href="#projects" className="btn btn--dark">View my work</a>
+            <a href="#work" className="btn btn--ember">See the work <FiArrowDown size={15} /></a>
             <a href={contact.cv} download className="btn btn--ghost">
-              <FiDownload size={15} /> Download CV
+              <FiDownload size={15} /> CV
             </a>
           </motion.div>
         </motion.div>
@@ -74,32 +78,16 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
         >
-          <div className="hero__ring" aria-hidden="true" />
-          <div className="hero__photo-frame">
-            <img
-              src="/profile.png"
-              alt="Yostina Abera Gobie"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextSibling.style.display = 'block';
-              }}
-            />
-            <span className="hero__photo-initials" style={{ display: 'none' }}>YA</span>
+          <div className="hero__moon">
+            <img src="/profile.png" alt="Yostina Abera Gobie" />
           </div>
-          <div className="hero__blob" aria-hidden="true" />
+          <Bat className="hero__moonbat" size={70} />
+          <Spider className="hero__spider" size={52} />
+          <Pumpkin className="hero__pumpkin" size={140} />
         </motion.div>
       </div>
 
-      <motion.a
-        href="#about"
-        className="hero__scroll"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.8 }}
-      >
-        <span className="hero__scroll-line" aria-hidden="true" />
-        Scroll
-      </motion.a>
+      <Scene />
     </section>
   );
 }

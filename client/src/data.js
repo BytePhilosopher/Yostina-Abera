@@ -1,130 +1,135 @@
-// ------- Education (timeline) -------
-export const education = [
-  {
-    school: 'Addis Ababa University',
-    detail: 'Top 10 in Africa',
-    degree: 'B.Sc. Computer Science',
-    period: '2024 – 2028',
-    brief: 'Studying core CS — ML, databases, operating systems, distributed systems, and algorithms.',
-  },
-  {
-    school: 'A2SV — Africa to Silicon Valley',
-    detail: 'Google-backed',
-    degree: 'Data Structures & Algorithms',
-    period: 'Jan 2026 – present',
-    brief: 'Solved 250+ problems on LeetCode & Codeforces, focused on graphs and dynamic programming.',
-  },
-  {
-    school: 'Quantum Computing Summer School',
-    detail: 'Great Distinction',
-    degree: 'Year-long Program',
-    period: 'Completed',
-    brief: 'Mastered quantum mechanics, protocols, and algorithms across a comprehensive program.',
-  },
+// ------- Stats -------
+export const stats = [
+  { value: '50M+', label: 'users on the national ID platform I worked on', icon: 'crowd' },
+  { value: '400+', label: 'algorithm problems solved', icon: 'glyphs' },
+  { value: '1,000+', label: 'engineers in the community I founded', icon: 'spider' },
 ];
 
 // ------- Experience -------
+// `icon` is a key resolved in Experience.jsx
 export const experience = [
   {
-    role: 'AI Researcher — ML Intern',
-    tag: 'TWELVE Football-backed',
-    org: 'AAU · Football Video Analytics Pipeline',
-    period: 'Nov 2025 – Jun 2026',
-    location: 'Remote · Sweden & Ethiopia',
-    points: [
-      'Contributed to an end-to-end football video-analytics platform using Python, OpenCV, YOLOv8, ByteTrack, and Streamlit to detect, track, and analyze players and the ball from match footage.',
-      'Implemented multi-object tracking, team classification (HSV + KMeans), homography-based pitch mapping, optical-flow camera motion compensation, and Kalman-filter ball tracking.',
-      'Built a stateful event-detection pipeline for passes, crosses, skill moves, possession, speed, and heatmaps — exporting structured CSV/JSON analytics and annotated video.',
-    ],
+    org: 'iCog Labs',
+    role: 'Software Engineer Intern',
+    period: '07/26 – 10/26',
+    icon: 'knot',
+    line: 'Residual-learning layer that adapts a frozen GPT-2 without touching its weights.',
+    tools: ['JAX', 'XLA', 'GPT-2'],
   },
   {
-    role: 'ML Engineer Intern',
-    org: 'Information Network Security Administration',
-    period: 'Aug 2025 – Sep 2025',
-    location: 'Addis Ababa, Ethiopia',
-    points: [
-      'Automated collection and preprocessing of network log data in Python to improve analysis efficiency.',
-      'Analyzed network logs with Pandas and SQL to extract insights supporting security investigations.',
-      'Created data visualizations and summary reports highlighting network activity, anomalies, and usage trends.',
-    ],
+    org: 'Football Analytics',
+    role: 'Software / ML Engineering Intern',
+    period: '11/25 – 06/26',
+    icon: 'ball',
+    line: 'Broadcast footage to player tracking. Post-match processing cut from O(n·k) to O(n).',
+    tools: ['Python', 'YOLOv8', 'ByteTrack', 'DBSCAN'],
   },
   {
-    role: 'Technical Assistant',
-    org: 'OHIO Global One Health',
-    period: 'Aug 2025 – Sep 2025',
-    location: 'Addis Ababa, Ethiopia',
-    points: [
-      'Digitized and organized documentation using office productivity tools, improving document retrieval and data-management efficiency.',
-    ],
+    org: 'INSA',
+    role: 'Software Engineer Intern',
+    period: '08/25 – 09/25',
+    icon: 'print',
+    line: "Backend scalability for a national digital ID, plus automated data pipelines.",
+    tools: ['REST', 'Python', 'SQL'],
   },
 ];
 
 // ------- Projects -------
-// `accent` drives the card cover gradient; `icon` is a key resolved in Projects.jsx
+// `icon` is a key resolved in Projects.jsx
 export const projects = [
   {
-    title: 'CP-Focus — Distraction Blocker',
-    icon: 'focus',
-    image: '/cpfocus.jpg',
-    accent: ['#33415c', '#9db2d9'],
-    blurb: 'A Chrome extension that blocks AI chatbots on competitive-programming sites.',
+    title: 'FuelQ',
+    icon: 'pump',
+    metric: '3–6 hr',
+    metricLabel: 'fuel lines, now virtual queues',
+    blurb: 'Live queue positions and Chapa deposits. GDG Hackathon.',
+    tools: ['Next.js', 'TypeScript', 'Supabase', 'WebSockets'],
+    link: 'https://github.com/BytePhilosopher/GDG-Hacktom/tree/main/smart-gas-queue',
+  },
+  {
+    title: 'CP-Focus',
+    icon: 'eyeball',
+    metric: '20+',
+    metricLabel: 'users in week one',
+    blurb: 'Chrome extension that keeps AI chatbots out of your practice on 6 CP sites.',
     tools: ['JavaScript', 'Chrome Extension API'],
     link: 'https://github.com/BytePhilosopher/CP-FOCUS',
     store: 'https://chromewebstore.google.com/detail/cf-focus-%E2%80%94-ai-blocker-for/obkgjknggnkpboahhaeieemknmpngmpl',
   },
   {
-    title: 'Amharic Sentiment Analysis',
-    icon: 'nlp',
-    accent: ['#7a4b2b', '#d9b48f'],
-    blurb: 'Classifies Amharic text sentiment — NLP for a low-resource language.',
-    tools: ['Python', 'Scikit-learn', 'NLP', 'TensorFlow'],
-    link: '#',
+    title: 'Inventory Management',
+    icon: 'cauldron',
+    metric: 'ACID',
+    metricLabel: 'every stock movement',
+    blurb: 'Multi-location stock with role-based access. Negative stock is impossible.',
+    tools: ['Java', 'JDBC', 'SQL Server', 'Swing'],
+    link: 'https://github.com/BytePhilosopher/Inventory-managment-system',
   },
   {
-    title: 'Football Video Analytics',
-    icon: 'football',
-    image: '/footballvideoanalytics.jpg',
-    accent: ['#2f5d3a', '#8bb894'],
-    blurb: 'Detects, tracks, and analyzes players and the ball from real match footage.',
-    tools: ['Python', 'OpenCV', 'YOLOv8', 'ByteTrack', 'Streamlit'],
-    link: 'https://github.com/ML-interns-aau/footballtracking',
-  },
-  {
-    title: 'Military Health Management',
-    icon: 'analytics',
-    image: '/militaryhealthmanagament.jpg',
-    accent: ['#5b3a5b', '#cfa9cf'],
-    blurb: 'A secure web-based system for managing military health records and services — streamlining medical care, appointments, and emergency response for personnel.',
-    tools: ['React', 'Node.js', 'React Router', 'MySQL'],
-    link: 'https://github.com/BytePhilosopher/military-management-system',
+    title: 'Fintech Review Analytics',
+    icon: 'coin',
+    metric: '1,200',
+    metricLabel: 'reviews across 3 banks',
+    blurb: "Scrape, clean, sentiment, PostgreSQL. Finds each bank's top complaint.",
+    tools: ['Python', 'PostgreSQL', 'DistilBERT', 'GitHub Actions'],
+    link: 'https://github.com/BytePhilosopher/fintech-review-analytics',
   },
 ];
 
-// ------- Skills (marquee) -------
-// `icon` maps to react-icons in Skills.jsx; unknown icons fall back to a monogram.
+// ------- Skills -------
+// `icon` maps to react-icons in Skills.jsx; items without one show `mono`.
 export const skills = [
-  { name: 'Python', icon: 'python' },
-  { name: 'Java', icon: 'java' },
-  { name: 'C++', icon: 'cplusplus' },
-  { name: 'C#', icon: 'csharp' },
-  { name: 'JavaScript', icon: 'javascript' },
-  { name: 'Node.js', icon: 'node' },
-  { name: 'Express', icon: 'express' },
-  { name: 'NestJS', icon: 'nest' },
-  { name: 'Next.js', icon: 'next' },
-  { name: 'PostgreSQL', icon: 'postgres' },
-  { name: 'MongoDB', icon: 'mongo' },
-  { name: 'MySQL', icon: 'mysql' },
-  { name: 'Redis', icon: 'redis' },
-  { name: 'TensorFlow', icon: 'tensorflow' },
-  { name: 'NumPy', icon: 'numpy' },
-  { name: 'Scikit-learn', icon: 'sklearn' },
-  { name: 'OpenCV', icon: 'opencv' },
-  { name: 'HuggingFace', icon: 'huggingface' },
-  { name: 'Streamlit', icon: 'streamlit' },
-  { name: 'Docker', icon: 'docker' },
-  { name: 'Linux', icon: 'linux' },
-  { name: 'Git', icon: 'git' },
+  {
+    group: 'Languages',
+    icon: 'bat',
+    items: [
+      { name: 'Python', icon: 'python' },
+      { name: 'Java', icon: 'java' },
+      { name: 'C++', icon: 'cplusplus' },
+      { name: 'JavaScript', icon: 'javascript' },
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'SQL', mono: 'SQL' },
+    ],
+  },
+  {
+    group: 'Backend & Data',
+    icon: 'cauldron',
+    items: [
+      { name: 'Node.js', icon: 'node' },
+      { name: 'Express', icon: 'express' },
+      { name: 'Next.js', icon: 'next' },
+      { name: 'PostgreSQL', icon: 'postgres' },
+      { name: 'MySQL', icon: 'mysql' },
+      { name: 'SQL Server', mono: 'MS' },
+      { name: 'Redis', icon: 'redis' },
+      { name: 'WebSockets', mono: 'WS' },
+    ],
+  },
+  {
+    group: 'ML',
+    icon: 'eyeball',
+    items: [
+      { name: 'JAX', mono: 'JAX' },
+      { name: 'NumPy', icon: 'numpy' },
+      { name: 'Pandas', icon: 'pandas' },
+      { name: 'Scikit-learn', icon: 'sklearn' },
+      { name: 'OpenCV', icon: 'opencv' },
+      { name: 'YOLOv8', mono: 'YO' },
+      { name: 'HuggingFace', icon: 'huggingface' },
+    ],
+  },
+  {
+    group: 'Tools',
+    icon: 'spider',
+    items: [
+      { name: 'Git', icon: 'git' },
+      { name: 'Linux', icon: 'linux' },
+      { name: 'Docker', icon: 'docker' },
+      { name: 'GitHub Actions', icon: 'actions' },
+      { name: 'pytest', icon: 'pytest' },
+      { name: 'JUnit', mono: 'JU' },
+    ],
+  },
 ];
 
 export const contact = {

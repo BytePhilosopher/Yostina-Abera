@@ -1,77 +1,69 @@
-import { motion } from 'framer-motion';
 import Reveal from './Reveal.jsx';
+import SectionHead from './SectionHead.jsx';
 import { skills } from '../data.js';
 import {
-  SiPython, SiCplusplus, SiJavascript, SiNodedotjs, SiExpress, SiNestjs,
-  SiNextdotjs, SiPostgresql, SiMongodb, SiMysql, SiRedis, SiTensorflow,
-  SiNumpy, SiScikitlearn, SiOpencv, SiHuggingface, SiStreamlit, SiDocker,
-  SiLinux, SiGit,
+  SiPython, SiCplusplus, SiJavascript, SiTypescript, SiNodedotjs, SiExpress,
+  SiNextdotjs, SiPostgresql, SiMysql, SiRedis, SiNumpy, SiPandas, SiScikitlearn,
+  SiOpencv, SiHuggingface, SiDocker, SiLinux, SiGit, SiGithubactions, SiPytest,
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
+import { Bat, Cauldron, Eyeball, Spider } from './Icons.jsx';
 
 const ICONS = {
   python: SiPython,
   java: FaJava,
   cplusplus: SiCplusplus,
   javascript: SiJavascript,
+  typescript: SiTypescript,
   node: SiNodedotjs,
   express: SiExpress,
-  nest: SiNestjs,
   next: SiNextdotjs,
   postgres: SiPostgresql,
-  mongo: SiMongodb,
   mysql: SiMysql,
   redis: SiRedis,
-  tensorflow: SiTensorflow,
   numpy: SiNumpy,
+  pandas: SiPandas,
   sklearn: SiScikitlearn,
   opencv: SiOpencv,
   huggingface: SiHuggingface,
-  streamlit: SiStreamlit,
   docker: SiDocker,
   linux: SiLinux,
   git: SiGit,
+  actions: SiGithubactions,
+  pytest: SiPytest,
 };
 
-function Chip({ name, icon }) {
+const GROUP_ICONS = { bat: Bat, cauldron: Cauldron, eyeball: Eyeball, spider: Spider };
+
+function Tile({ name, icon, mono }) {
   const Icon = ICONS[icon];
   return (
-    <div className="skill-chip">
-      {Icon ? <Icon /> : <span className="skill-chip__mono">{name.slice(0, 2)}</span>}
-      <span className="skill-chip__name">{name}</span>
-    </div>
-  );
-}
-
-function Row({ items, reverse = false, duration = 32 }) {
-  const doubled = [...items, ...items];
-  return (
-    <div className="marquee">
-      <motion.div
-        className="marquee__row"
-        animate={{ x: reverse ? ['-50%', '0%'] : ['0%', '-50%'] }}
-        transition={{ duration, repeat: Infinity, ease: 'linear' }}
-      >
-        {doubled.map((s, i) => <Chip key={i} {...s} />)}
-      </motion.div>
-    </div>
+    <li className="skill-tile">
+      {Icon ? <Icon /> : <span className="skill-tile__mono">{mono}</span>}
+      <span>{name}</span>
+    </li>
   );
 }
 
 export default function Skills() {
-  const mid = Math.ceil(skills.length / 2);
-  const rowA = skills.slice(0, mid);
-  const rowB = skills.slice(mid);
-
   return (
-    <section className="section skills-section" id="skills">
-      <Reveal className="skills-head">
-        <h2 className="section__title">Skills</h2>
-      </Reveal>
-      <Reveal delay={0.1}>
-        <Row items={rowA} duration={34} />
-        <Row items={rowB} reverse duration={40} />
-      </Reveal>
+    <section className="section" id="stack">
+      <div className="container">
+        <SectionHead icon={Cauldron} title="Stack" />
+        <div className="stack">
+          {skills.map((g, i) => {
+            const GroupIcon = GROUP_ICONS[g.icon];
+            return (
+              <Reveal className="stack__group" key={g.group} delay={i * 0.06}>
+                <h3><GroupIcon size={28} /> {g.group}</h3>
+                <ul>
+                  {g.items.map((s) => <Tile key={s.name} {...s} />)}
+                </ul>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
