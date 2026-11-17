@@ -4,23 +4,22 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import Reveal from './Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
 import { contact } from '../data.js';
-import { Ghost } from './Icons.jsx';
 
 export default function Github() {
   const [failed, setFailed] = useState(false);
   const user = contact.githubUser;
-  const chart = `https://ghchart.rshah.org/ff7a18/${user}`;
+  const chart = `https://ghchart.rshah.org/3348e0/${user}`;
   const profile = `https://github.com/${user}`;
 
   return (
     <section className="section section--alt" id="github">
       <div className="container">
-        <SectionHead icon={Ghost} title="Commits" />
+        <SectionHead index="04" eyebrow="Activity" title="Shipping consistently" />
 
-        <Reveal className="scroll-card" delay={0.1}>
-          <div className="scroll-card__chart">
+        <Reveal className="activity" delay={0.1}>
+          <div className="activity__chart">
             {failed ? (
-              <p className="scroll-card__fallback">Graph unavailable right now.</p>
+              <p className="activity__fallback">Contribution graph is unavailable right now.</p>
             ) : (
               <img
                 src={chart}
@@ -30,9 +29,12 @@ export default function Github() {
               />
             )}
           </div>
-          <a className="scroll-card__cta" href={profile} target="_blank" rel="noopener">
-            <FaGithub size={17} /> @{user} <FiArrowUpRight size={15} />
-          </a>
+          <div className="activity__foot">
+            <span>Contributions over the past year</span>
+            <a href={profile} target="_blank" rel="noopener noreferrer">
+              <FaGithub size={16} /> @{user} <FiArrowUpRight size={14} />
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

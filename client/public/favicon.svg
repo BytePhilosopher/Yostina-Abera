@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#000"/>
-  <path d="M29 16c0-4-1-6-4-9l8-2c3 3 4 7 4 11z" fill="#6fa53f"/>
-  <ellipse cx="32" cy="37" rx="29" ry="23" fill="#e8650f"/>
-  <ellipse cx="32" cy="37" rx="14" ry="23" fill="#ff7a18"/>
-  <path d="M12 33l12-8 2 11zM52 33l-12-8-2 11zM10 43l8 2 5-4 5 5 4-4 4 4 5-5 5 4 8-2c-3 9-12 14-22 14s-19-5-22-14z" fill="#000"/>
+  <rect width="64" height="64" rx="14" fill="#15161a"/>
+  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#f6f4ef" letter-spacing="1">YA</text>
+  <rect x="18" y="49" width="28" height="2.5" rx="1.25" fill="#6f80ff"/>
 </svg>

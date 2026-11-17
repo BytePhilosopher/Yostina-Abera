@@ -1,76 +1,81 @@
+// ------- Profile -------
+export const profile = {
+  name: 'Yostina Abera',
+  fullName: 'Yostina Abera Gobie',
+  role: 'Software Engineer',
+  focus: 'Backend · ML · Data',
+  location: 'Ethiopia',
+  current: { org: 'iCog Labs', what: 'ML systems in JAX' },
+};
+
 // ------- Stats -------
 export const stats = [
-  { value: '50M+', label: 'users on the national ID platform I worked on', icon: 'crowd' },
-  { value: '400+', label: 'algorithm problems solved', icon: 'glyphs' },
-  { value: '1,000+', label: 'engineers in the community I founded', icon: 'spider' },
+  { value: '50M+', label: 'citizens served by the national ID platform I worked on' },
+  { value: '400+', label: 'algorithm problems solved across competitive platforms' },
+  { value: '1,000+', label: 'engineers in the developer community I founded' },
 ];
 
 // ------- Experience -------
-// `icon` is a key resolved in Experience.jsx
 export const experience = [
   {
     org: 'iCog Labs',
     role: 'Software Engineer Intern',
-    period: '07/26 – 10/26',
-    icon: 'knot',
-    line: 'Residual-learning layer that adapts a frozen GPT-2 without touching its weights.',
+    period: 'Jul 2026 – Oct 2026',
+    line: 'Built a residual-learning layer that adapts a frozen GPT-2 without modifying its weights.',
     tools: ['JAX', 'XLA', 'GPT-2'],
   },
   {
     org: 'Football Analytics',
     role: 'Software / ML Engineering Intern',
-    period: '11/25 – 06/26',
-    icon: 'ball',
-    line: 'Broadcast footage to player tracking. Post-match processing cut from O(n·k) to O(n).',
+    period: 'Nov 2025 – Jun 2026',
+    line: 'Turned broadcast footage into player tracking data and cut post-match processing from O(n·k) to O(n).',
     tools: ['Python', 'YOLOv8', 'ByteTrack', 'DBSCAN'],
   },
   {
     org: 'INSA',
     role: 'Software Engineer Intern',
-    period: '08/25 – 09/25',
-    icon: 'print',
-    line: "Backend scalability for a national digital ID, plus automated data pipelines.",
+    period: 'Aug 2025 – Sep 2025',
+    line: 'Improved backend scalability for a national digital ID system and automated its data pipelines.',
     tools: ['REST', 'Python', 'SQL'],
   },
 ];
 
 // ------- Projects -------
-// `icon` is a key resolved in Projects.jsx
 export const projects = [
   {
     title: 'FuelQ',
-    icon: 'pump',
+    kind: 'Web platform · Hackathon',
     metric: '3–6 hr',
-    metricLabel: 'fuel lines, now virtual queues',
-    blurb: 'Live queue positions and Chapa deposits. GDG Hackathon.',
+    metricLabel: 'fuel lines turned into virtual queues',
+    blurb: 'Live queue positions and advance deposits via Chapa, built at the GDG Hackathon.',
     tools: ['Next.js', 'TypeScript', 'Supabase', 'WebSockets'],
     link: 'https://github.com/BytePhilosopher/GDG-Hacktom/tree/main/smart-gas-queue',
   },
   {
     title: 'CP-Focus',
-    icon: 'eyeball',
+    kind: 'Chrome extension',
     metric: '20+',
-    metricLabel: 'users in week one',
-    blurb: 'Chrome extension that keeps AI chatbots out of your practice on 6 CP sites.',
+    metricLabel: 'active users in the first week',
+    blurb: 'Keeps AI chatbots out of competitive-programming practice across 6 major platforms.',
     tools: ['JavaScript', 'Chrome Extension API'],
     link: 'https://github.com/BytePhilosopher/CP-FOCUS',
     store: 'https://chromewebstore.google.com/detail/cf-focus-%E2%80%94-ai-blocker-for/obkgjknggnkpboahhaeieemknmpngmpl',
   },
   {
     title: 'Inventory Management',
-    icon: 'cauldron',
+    kind: 'Desktop application',
     metric: 'ACID',
-    metricLabel: 'every stock movement',
-    blurb: 'Multi-location stock with role-based access. Negative stock is impossible.',
+    metricLabel: 'guarantees on every stock movement',
+    blurb: 'Multi-location stock control with role-based access, designed so negative stock is impossible.',
     tools: ['Java', 'JDBC', 'SQL Server', 'Swing'],
     link: 'https://github.com/BytePhilosopher/Inventory-managment-system',
   },
   {
     title: 'Fintech Review Analytics',
-    icon: 'coin',
+    kind: 'Data pipeline · NLP',
     metric: '1,200',
-    metricLabel: 'reviews across 3 banks',
-    blurb: "Scrape, clean, sentiment, PostgreSQL. Finds each bank's top complaint.",
+    metricLabel: 'reviews analysed across 3 banks',
+    blurb: "Scraping, cleaning, sentiment analysis and PostgreSQL storage that surfaces each bank's top complaint.",
     tools: ['Python', 'PostgreSQL', 'DistilBERT', 'GitHub Actions'],
     link: 'https://github.com/BytePhilosopher/fintech-review-analytics',
   },
@@ -81,7 +86,6 @@ export const projects = [
 export const skills = [
   {
     group: 'Languages',
-    icon: 'bat',
     items: [
       { name: 'Python', icon: 'python' },
       { name: 'Java', icon: 'java' },
@@ -93,7 +97,6 @@ export const skills = [
   },
   {
     group: 'Backend & Data',
-    icon: 'cauldron',
     items: [
       { name: 'Node.js', icon: 'node' },
       { name: 'Express', icon: 'express' },
@@ -106,8 +109,7 @@ export const skills = [
     ],
   },
   {
-    group: 'ML',
-    icon: 'eyeball',
+    group: 'Machine Learning',
     items: [
       { name: 'JAX', mono: 'JAX' },
       { name: 'NumPy', icon: 'numpy' },
@@ -119,8 +121,7 @@ export const skills = [
     ],
   },
   {
-    group: 'Tools',
-    icon: 'spider',
+    group: 'Tooling',
     items: [
       { name: 'Git', icon: 'git' },
       { name: 'Linux', icon: 'linux' },

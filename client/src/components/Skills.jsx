@@ -7,7 +7,6 @@ import {
   SiOpencv, SiHuggingface, SiDocker, SiLinux, SiGit, SiGithubactions, SiPytest,
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
-import { Bat, Cauldron, Eyeball, Spider } from './Icons.jsx';
 
 const ICONS = {
   python: SiPython,
@@ -33,14 +32,14 @@ const ICONS = {
   pytest: SiPytest,
 };
 
-const GROUP_ICONS = { bat: Bat, cauldron: Cauldron, eyeball: Eyeball, spider: Spider };
-
-function Tile({ name, icon, mono }) {
+function Skill({ name, icon, mono }) {
   const Icon = ICONS[icon];
   return (
-    <li className="skill-tile">
-      {Icon ? <Icon /> : <span className="skill-tile__mono">{mono}</span>}
-      <span>{name}</span>
+    <li className="skill">
+      <span className="skill__icon" aria-hidden="true">
+        {Icon ? <Icon /> : <span className="skill__mono">{mono}</span>}
+      </span>
+      {name}
     </li>
   );
 }
@@ -49,19 +48,19 @@ export default function Skills() {
   return (
     <section className="section" id="stack">
       <div className="container">
-        <SectionHead icon={Cauldron} title="Stack" />
+        <SectionHead index="03" eyebrow="Toolkit" title="The stack I work in" />
         <div className="stack">
-          {skills.map((g, i) => {
-            const GroupIcon = GROUP_ICONS[g.icon];
-            return (
-              <Reveal className="stack__group" key={g.group} delay={i * 0.06}>
-                <h3><GroupIcon size={28} /> {g.group}</h3>
-                <ul>
-                  {g.items.map((s) => <Tile key={s.name} {...s} />)}
-                </ul>
-              </Reveal>
-            );
-          })}
+          {skills.map((g, i) => (
+            <Reveal className="stack__group" key={g.group} delay={i * 0.06}>
+              <h3>
+                <span>{g.group}</span>
+                <small>{String(g.items.length).padStart(2, '0')}</small>
+              </h3>
+              <ul>
+                {g.items.map((s) => <Skill key={s.name} {...s} />)}
+              </ul>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

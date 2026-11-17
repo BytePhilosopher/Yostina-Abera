@@ -1,72 +1,76 @@
 import { motion } from 'framer-motion';
-import { FiDownload, FiArrowDown } from 'react-icons/fi';
-import { contact } from '../data.js';
-import Scene from './Scene.jsx';
-import { Bat, Pumpkin, Spider, Web, WitchHat } from './Icons.jsx';
+import { FiArrowRight, FiDownload, FiMapPin } from 'react-icons/fi';
+import { contact, profile } from '../data.js';
 
+const ease = [0.22, 1, 0.36, 1];
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 const item = {
-  hidden: { opacity: 0, y: 26 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
-
-const EMBERS = [6, 14, 23, 31, 38, 47, 55, 62, 70, 78, 86, 94];
 
 export default function Hero() {
   return (
     <section className="hero" id="top">
-      <div className="hero__embers" aria-hidden="true">
-        {EMBERS.map((left, i) => (
-          <span key={left} style={{ left: `${left}%`, animationDelay: `${(i * 1.7) % 9}s`, animationDuration: `${8 + (i % 5)}s` }} />
-        ))}
-      </div>
-      <Web className="hero__web" size={280} />
-      <Bat className="bat bat--1" size={54} />
-      <Bat className="bat bat--2" size={34} />
-      <Bat className="bat bat--3" size={24} />
+      <div className="hero__grid" aria-hidden="true" />
 
       <div className="container hero__inner">
         <motion.div className="hero__text" variants={container} initial="hidden" animate="show">
-          <motion.p className="hero__name" variants={item}>Yostina Abera</motion.p>
-          <motion.h1 className="hero__title" variants={item}>Developer</motion.h1>
-          <motion.p className="hero__lede" variants={item}>
-            Backends, ML pipelines and data systems. Built after dark.
+          <motion.p className="hero__kicker" variants={item}>
+            <span className="status-dot" aria-hidden="true" />
+            Open to software &amp; ML engineering roles
           </motion.p>
+
+          <motion.h1 className="hero__title" variants={item}>
+            Yostina <em>Abera</em>
+          </motion.h1>
+
+          <motion.p className="hero__lede" variants={item}>
+            {profile.role} building reliable backends, ML pipelines and data systems —
+            from a national digital ID platform serving <strong>50M+ people</strong> to
+            real-time computer vision.
+          </motion.p>
+
           <motion.div className="hero__actions" variants={item}>
-            <a href="#work" className="btn btn--ember">See the work <FiArrowDown size={15} /></a>
-            <a href={contact.cv} download className="btn btn--ghost">
-              <FiDownload size={15} /> CV
+            <a href="#work" className="btn btn--primary">
+              View selected work <FiArrowRight size={16} />
+            </a>
+            <a href={contact.cv} download className="btn btn--outline">
+              <FiDownload size={16} /> Download CV
             </a>
           </motion.div>
+
+          <motion.ul className="hero__meta" variants={item}>
+            <li><FiMapPin size={14} /> {profile.location}</li>
+            <li>{profile.focus}</li>
+          </motion.ul>
         </motion.div>
 
-        <motion.div
-          className="hero__photo"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+        <motion.figure
+          className="hero__portrait"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease, delay: 0.2 }}
         >
-          <div className="hero__moon">
-            <img src="/profile-cutout.png" alt="Yostina Abera Gobie" />
-            <span className="hero__fog" aria-hidden="true" />
-            <span className="hero__lightning" aria-hidden="true" />
+          <div className="hero__frame">
+            <img src="/profile.jpg" alt={`Portrait of ${profile.fullName}`} width="890" height="1042" />
           </div>
-          <WitchHat className="hero__hat" size="100%" />
-          <div className="hero__orbit" aria-hidden="true">
-            <Bat size={46} />
-            <Bat size={30} />
-            <Bat size={38} />
-          </div>
-          <Spider className="hero__spider" size={52} />
-          <Pumpkin className="hero__pumpkin" size={140} />
-          <Pumpkin className="hero__pumpkin hero__pumpkin--small" size={78} />
-        </motion.div>
+          <motion.figcaption
+            className="hero__badge"
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.7 }}
+          >
+            <span className="hero__badge-label">Currently</span>
+            <strong>{profile.current.org}</strong>
+            <span>{profile.current.what}</span>
+          </motion.figcaption>
+          <span className="hero__ring" aria-hidden="true" />
+        </motion.figure>
       </div>
-
-      <Scene />
     </section>
   );
 }

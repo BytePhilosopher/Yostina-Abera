@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub, FiArrowUpRight, FiSend } from 'react-icons/fi';
 import { contact } from '../data.js';
-import { Spider, Web } from './Icons.jsx';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -44,9 +43,6 @@ export default function Contact() {
 
   return (
     <section className="section section--contact" id="contact">
-      <Web className="contact__web contact__web--left" size={300} />
-      <Web className="contact__web contact__web--right" size={240} />
-      <Spider className="contact__spider" size={56} />
       <div className="container">
         <motion.div
           className="contact"
@@ -56,12 +52,24 @@ export default function Contact() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="contact__intro">
-            <h2 className="contact__title">Let's build.</h2>
-            <p className="contact__lede">Don't be a ghost.</p>
+            <p className="section__eyebrow">
+              <span className="section__index">05</span>
+              <span className="section__rule" aria-hidden="true" />
+              Contact
+            </p>
+            <h2 className="contact__title">Let's build something <em>reliable</em>.</h2>
+            <p className="contact__lede">
+              I'm open to internships, full-time roles and collaborations in backend,
+              data and ML engineering. I usually reply within a day.
+            </p>
             <ul className="contact__channels">
               {channels.map((c) => (
                 <li key={c.label}>
-                  <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noopener">
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith('http') ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                  >
                     <span className="contact__channel-icon">{c.icon}</span>
                     <span className="contact__channel-text">
                       <small>{c.label}</small>
@@ -75,34 +83,37 @@ export default function Contact() {
           </div>
 
           <form className="contact__card" onSubmit={submit}>
-            <label>
-              <span>Name</span>
-              <input
-                type="text" required placeholder="Your name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-              />
-            </label>
-            <label>
-              <span>Email</span>
-              <input
-                type="email" required placeholder="you@email.com"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-              />
-            </label>
+            <h3 className="contact__card-title">Send a message</h3>
+            <div className="contact__row">
+              <label>
+                <span>Name</span>
+                <input
+                  type="text" required placeholder="Your name" autoComplete="name"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                />
+              </label>
+              <label>
+                <span>Email</span>
+                <input
+                  type="email" required placeholder="you@company.com" autoComplete="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                />
+              </label>
+            </div>
             <label>
               <span>Message</span>
               <textarea
-                required rows="4" placeholder="The role or the project…"
+                required rows="5" placeholder="Tell me about the role or project…"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
               />
             </label>
-            <button type="submit" disabled={sending}>
+            <button type="submit" className="btn btn--primary" disabled={sending}>
               <FiSend size={15} /> {sending ? 'Sending…' : 'Send message'}
             </button>
-            {status && <p className="contact__status">{status}</p>}
+            {status && <p className="contact__status" role="status">{status}</p>}
           </form>
         </motion.div>
       </div>
