@@ -39,7 +39,7 @@ export default function Contact() {
       setStatus("Thanks — I'll reply soon.");
       setForm({ name: '', email: '', message: '' });
     } catch {
-      setStatus('Couldn't send. Please email me instead.');
+      setStatus("Couldn't send. Please email me instead.");
     } finally {
       setSending(false);
     }

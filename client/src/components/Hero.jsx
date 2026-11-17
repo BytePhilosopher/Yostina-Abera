@@ -60,7 +60,7 @@ export default function Hero() {
         </motion.div>
 
         {stats.map((s, i) => (
-          <motion.div className="tile spot tile--stat" key={s.label} {...tile(4 + i)}>
+          <motion.div className={`tile spot tile--stat tile--s${i + 1}`} key={s.label} {...tile(4 + i)}>
             <strong>{s.value}</strong>
             <span className="muted">{s.label}</span>
           </motion.div>

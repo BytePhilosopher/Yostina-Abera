@@ -235,9 +235,9 @@ ul, ol { list-style: none; }
 .tile--photo { grid-area: photo; padding: 0; background: var(--sunken); }
 .tile--now { grid-area: now; }
 .tile--clock { grid-area: clock; }
-.tile--stat:nth-of-type(5) { grid-area: s1; }
-.tile--stat:nth-of-type(6) { grid-area: s2; }
-.tile--stat:nth-of-type(7) { grid-area: s3; }
+.tile--s1 { grid-area: s1; }
+.tile--s2 { grid-area: s2; }
+.tile--s3 { grid-area: s3; }
 .tile--social { grid-area: social; }
 
 .hero__name {
@@ -255,6 +255,8 @@ ul, ol { list-style: none; }
   transition: transform 0.8s var(--ease), filter 0.8s var(--ease);
 }
 .tile--photo:hover img { transform: scale(1.04); filter: grayscale(0.6) contrast(1.05); }
+:root[data-theme="dark"] .tile--photo img { filter: grayscale(1) contrast(1.05) brightness(0.86); }
+:root[data-theme="dark"] .tile--photo:hover img { filter: grayscale(0.6) contrast(1.05) brightness(0.92); }
 
 .tile--now, .tile--clock { display: flex; flex-direction: column; justify-content: space-between; gap: 1.2rem; }
 .tile--now div, .tile--clock div { display: flex; flex-direction: column; gap: 0.15rem; }
@@ -455,7 +457,7 @@ ul, ol { list-style: none; }
   .hero { padding-top: 76px; }
   .tile { padding: 1.1rem; }
   .tile--intro { min-height: 330px; }
-  .tile--photo { min-height: 240px; }
+  .tile--photo { min-height: 240px; padding: 0; }
   .hero__actions .btn { flex: 1 1 auto; }
   .tile--stat { min-height: 116px; }
   .clock { font-size: 1.6rem; }

@@ -4,7 +4,6 @@ export const profile = {
   fullName: 'Yostina Abera Gobie',
   role: 'Software Engineer',
   focus: 'Backend · ML · Data',
-  tagline: 'Backends, ML pipelines & data systems.',
   timeZone: 'Africa/Addis_Ababa',
   location: 'Ethiopia',
   current: { org: 'iCog Labs', what: 'ML research · JAX' },
