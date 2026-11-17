@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
 import Reveal from './Reveal.jsx';
 import SectionHead from './SectionHead.jsx';
@@ -12,29 +11,24 @@ export default function Github() {
   const profile = `https://github.com/${user}`;
 
   return (
-    <section className="section section--alt" id="github">
+    <section className="section" id="github">
       <div className="container">
-        <SectionHead index="04" eyebrow="Activity" title="Shipping consistently" />
-
-        <Reveal className="activity" delay={0.1}>
-          <div className="activity__chart">
-            {failed ? (
-              <p className="activity__fallback">Contribution graph is unavailable right now.</p>
-            ) : (
-              <img
-                src={chart}
-                alt={`${user}'s GitHub contribution graph for the past year`}
-                loading="lazy"
-                onError={() => setFailed(true)}
-              />
-            )}
-          </div>
-          <div className="activity__foot">
-            <span>Contributions over the past year</span>
-            <a href={profile} target="_blank" rel="noopener noreferrer">
-              <FaGithub size={16} /> @{user} <FiArrowUpRight size={14} />
-            </a>
-          </div>
+        <SectionHead
+          index="03"
+          title="Activity"
+          aside={<a className="link" href={profile} target="_blank" rel="noopener noreferrer">@{user} <FiArrowUpRight /></a>}
+        />
+        <Reveal className="tile spot activity" delay={0.1}>
+          {failed ? (
+            <p className="muted">Contribution graph unavailable.</p>
+          ) : (
+            <img
+              src={chart}
+              alt={`${user}'s GitHub contributions over the past year`}
+              loading="lazy"
+              onError={() => setFailed(true)}
+            />
+          )}
         </Reveal>
       </div>
     </section>

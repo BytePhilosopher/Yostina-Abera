@@ -4,9 +4,9 @@ import { FiMoon, FiSun } from 'react-icons/fi';
 import { contact } from '../data.js';
 
 const links = [
+  ['Stack', '#stack'],
   ['Work', '#work'],
   ['Experience', '#experience'],
-  ['Stack', '#stack'],
   ['Activity', '#github'],
   ['Contact', '#contact'],
 ];
@@ -37,7 +37,7 @@ export default function Navbar() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', theme === 'dark' ? '#0f1013' : '#f6f4ef');
+      ?.setAttribute('content', theme === 'dark' ? '#09090b' : '#fafaf9');
   }, [theme]);
 
   const toggleTheme = () => {

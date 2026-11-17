@@ -1,5 +1,3 @@
-import Reveal from './Reveal.jsx';
-import SectionHead from './SectionHead.jsx';
 import { skills } from '../data.js';
 import {
   SiPython, SiCplusplus, SiJavascript, SiTypescript, SiNodedotjs, SiExpress,
@@ -32,13 +30,15 @@ const ICONS = {
   pytest: SiPytest,
 };
 
-function Skill({ name, icon, mono }) {
+const all = skills.flatMap((g) => g.items);
+const half = Math.ceil(all.length / 2);
+const rows = [all.slice(0, half), all.slice(half)];
+
+function Item({ name, icon, mono }) {
   const Icon = ICONS[icon];
   return (
-    <li className="skill">
-      <span className="skill__icon" aria-hidden="true">
-        {Icon ? <Icon /> : <span className="skill__mono">{mono}</span>}
-      </span>
+    <li className="marquee__item">
+      {Icon ? <Icon aria-hidden="true" /> : <span className="marquee__mono" aria-hidden="true">{mono}</span>}
       {name}
     </li>
   );
@@ -46,23 +46,21 @@ function Skill({ name, icon, mono }) {
 
 export default function Skills() {
   return (
-    <section className="section" id="stack">
-      <div className="container">
-        <SectionHead index="03" eyebrow="Toolkit" title="The stack I work in" />
-        <div className="stack">
-          {skills.map((g, i) => (
-            <Reveal className="stack__group" key={g.group} delay={i * 0.06}>
-              <h3>
-                <span>{g.group}</span>
-                <small>{String(g.items.length).padStart(2, '0')}</small>
-              </h3>
-              <ul>
-                {g.items.map((s) => <Skill key={s.name} {...s} />)}
-              </ul>
-            </Reveal>
+    <section className="stack" id="stack" aria-label="Tech stack">
+      <div className="container stack__head">
+        <span className="label">Stack</span>
+        <span className="muted">{all.length} tools I ship with</span>
+      </div>
+      {rows.map((row, r) => (
+        <div className={`marquee ${r ? 'marquee--reverse' : ''}`} key={r}>
+          {/* Two copies so the loop is seamless; the second is hidden from screen readers */}
+          {[0, 1].map((copy) => (
+            <ul className="marquee__track" key={copy} aria-hidden={copy === 1 || undefined}>
+              {row.map((s) => <Item key={s.name} {...s} />)}
+            </ul>
           ))}
         </div>
-      </div>
+      ))}
     </section>
   );
 }

@@ -4,31 +4,29 @@ import { experience } from '../data.js';
 
 export default function Experience() {
   return (
-    <section className="section section--alt" id="experience">
+    <section className="section" id="experience">
       <div className="container">
-        <SectionHead index="02" eyebrow="Experience" title="Where I've built">
-          Engineering internships across national infrastructure, sports analytics and ML research.
-        </SectionHead>
+        <SectionHead index="02" title="Experience" />
 
-        <ol className="timeline">
+        <ol className="xp">
           {experience.map((e, i) => (
             <motion.li
-              className="timeline__item"
+              className="xp__row"
               key={e.org}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '0px 0px -60px 0px' }}
+              viewport={{ once: true, margin: '0px 0px -40px 0px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.06 }}
             >
-              <time className="timeline__period">{e.period}</time>
-              <div className="timeline__body">
-                <h3>{e.org}</h3>
-                <p className="timeline__role">{e.role}</p>
-                <p className="timeline__line">{e.line}</p>
-                <ul className="tags">
-                  {e.tools.map((t) => <li key={t}>{t}</li>)}
-                </ul>
+              <h3 className="xp__org">{e.org}</h3>
+              <div className="xp__body">
+                <p className="xp__role">{e.role}</p>
+                <p className="muted">{e.line}</p>
               </div>
+              <ul className="tags xp__tags">
+                {e.tools.map((t) => <li key={t}>{t}</li>)}
+              </ul>
+              <time className="xp__period">{e.period}</time>
             </motion.li>
           ))}
         </ol>

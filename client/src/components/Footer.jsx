@@ -6,8 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <span>© {new Date().getFullYear()} {profile.fullName}</span>
-        <span className="footer__note">Designed &amp; built with React</span>
-        <a href="#top">Back to top <FiArrowUp size={14} /></a>
+        <a href="#top">Top <FiArrowUp size={14} /></a>
       </div>
     </footer>
   );
